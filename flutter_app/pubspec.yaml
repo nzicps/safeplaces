@@ -1,0 +1,15 @@
+﻿name: safeplaces
+description: A Safe/Unsafe location marking app
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.17.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.1.0
+  google_maps_flutter: ^2.5.0
+
+flutter:
+  uses-material-design: true
