@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../api/places_api.dart';
 import '../models/place.dart';
@@ -11,7 +11,7 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  GoogleMapController? mapController;
+  GoogleMapController? controller;
   Set<Marker> markers = {};
 
   @override
@@ -24,13 +24,13 @@ class _MapScreenState extends State<MapScreen> {
     final places = await PlacesAPI.fetchPlaces();
 
     setState(() {
-      markers = places.map((place) {
+      markers = places.map((p) {
         return Marker(
-          markerId: MarkerId(place.id.toString()),
-          position: LatLng(place.latitude, place.longitude),
+          markerId: MarkerId(p.id.toString()),
+          position: LatLng(p.latitude, p.longitude),
           infoWindow: InfoWindow(
-            title: place.name,
-            snippet: place.isSafe ? 'Safe' : 'Unsafe',
+            title: p.name,
+            snippet: p.isSafe ? 'SAFE' : 'UNSAFE',
           ),
         );
       }).toSet();
@@ -40,16 +40,14 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('SafePlaces Map')),
+      appBar: AppBar(title: const Text("SafePlaces Map")),
       body: GoogleMap(
         initialCameraPosition: const CameraPosition(
           target: LatLng(0, 0),
           zoom: 2,
         ),
         markers: markers,
-        onMapCreated: (controller) {
-          mapController = controller;
-        },
+        onMapCreated: (c) => controller = c,
       ),
     );
   }

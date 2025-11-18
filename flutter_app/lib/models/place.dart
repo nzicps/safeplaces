@@ -1,4 +1,4 @@
-﻿class Place {
+class Place {
   final int id;
   final String name;
   final String description;

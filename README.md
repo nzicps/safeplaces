@@ -1,26 +1,11 @@
-# ??? SafePlaces
+# SafePlaces
+A cross-platform Safe/Unsafe map app with a Django backend and Flutter frontend.
 
-A Flutter + Django app for marking safe and unsafe places on a map.
+## Run Backend
+./scripts/run_backend.ps1
 
-## ?? Features
-- Safe/Unsafe location markers
-- Django REST API backend
-- Flutter Google Maps interface
+## Run Flutter App (all platforms)
+./scripts/run_flutter.ps1
 
-## ?? Project Structure
-- backend/ ? Django API
-- flutter_app/ ? Flutter mobile app
-- docs/ ? project documentation
-
-## ?? Run Flutter App
-flutter pub get
-flutter run
-
-## ?? Run Django Backend
-pip install django djangorestframework
-cd backend
-python manage.py migrate
-python manage.py runserver
-
-## ?? API Endpoint
-GET http://127.0.0.1:8000/api/places/
+## Build Android Release
+./scripts/build_android.ps1
